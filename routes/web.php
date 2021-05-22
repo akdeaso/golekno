@@ -37,6 +37,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/editprofil', 'App\Http\Controllers\AkunController@edit')->name('editprofil');
 });
 
-Route::patch('editprofil', 'AkunController@update')
+Route::patch('editprofil', 'App\Http\Controllers\AkunController@update')
         ->name('updateprofil');
 
