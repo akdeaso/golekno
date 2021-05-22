@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Routes;
+use App\User;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('homepage');
 });
 
 Auth::routes();
@@ -24,3 +28,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//profile
+Route::get('/profil', 'App\Http\Controllers\AkunController@index');
