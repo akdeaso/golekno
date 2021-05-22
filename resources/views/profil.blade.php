@@ -5,7 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Profil Diri') }}</div>
+                <div class="card-header">{{ __('Profil Diri') }}
+                    <a type="button" class="btn btn-primary" href="{{route('editprofil')}}"> Edit</a>
+            </div>
                 <div class="card-body">
                     <div class="container">
                         <div class="row mb-4">
@@ -20,7 +22,11 @@
                             @endforeach --}}
                             : {{ Auth::user()->name }} <br>
                             : {{ Auth::user()->email }} <br>
+
+
+
                         </div>
+
                     </div>
 
                 </div>

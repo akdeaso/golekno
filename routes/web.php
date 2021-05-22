@@ -31,3 +31,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //profile
 Route::get('/profil', 'App\Http\Controllers\AkunController@index');
+
+//editprofil
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/editprofil', 'App\Http\Controllers\AkunController@edit')->name('editprofil');
+});
+
+Route::patch('editprofil', 'AkunController@update')
+        ->name('updateprofil');
+
