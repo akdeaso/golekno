@@ -18,7 +18,7 @@ use App\User;
 */
 
 Route::get('/', function () {
-    return view('homepage');
+    return redirect('homepage');
 });
 
 Auth::routes();

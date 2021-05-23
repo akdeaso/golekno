@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col">
-            <div class="card align-middle">
-                <div class="card-header align-middle">{{ __('Homepage') }}
+            <div class="card">
+                <div class="card-header">{{ __('Homepage') }}
                     <a class="btn btn-info float-right" href="pos/buat">
                         {{ __('Buat Pos') }}
                     </a>
