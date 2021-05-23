@@ -11,7 +11,7 @@ class PostController extends Controller
     //
     public function index()
     {
-        $post = DB::table('posts');
+        $post = DB::table('posts')->get();
         return view('pos/buat', ['posts' => $post]);
     }
 
