@@ -17,6 +17,12 @@
                     {{ __('Selamat kamu berhasil masuk!') }}
                 </div>
             </div>
+
+            <br>
+            <div>
+                <a href="pos/buat" class="btn btn-info" role="button">Buat Post</a>
+            </div>
+
         </div>
     </div>
 </div>

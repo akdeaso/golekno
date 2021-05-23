@@ -39,6 +39,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::patch('profil/update', 'App\Http\Controllers\AkunController@update')->name('profil.update');
     //hapusakun
     Route::get('profil/hapus/{id}','App\Http\Controllers\AkunController@hapus');
+
+
 });
 
 
+Route::get('pos/buat','App\Http\Controllers\PostController@index');
+Route::post('pos/simpan', 'App\Http\Controllers\PostController@simpan') ->name('pos.simpan');
