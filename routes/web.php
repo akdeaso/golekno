@@ -30,13 +30,11 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //profile
-Route::get('/profil', 'App\Http\Controllers\AkunController@index');
+
 
 //editprofil
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/editprofil', 'App\Http\Controllers\AkunController@edit')->name('editprofil');
+    Route::get('profil', 'App\Http\Controllers\AkunController@index');
+    Route::get('profil/edit/{id}', 'App\Http\Controllers\AkunController@edit');
+    Route::patch('profil/update', 'App\Http\Controllers\AkunController@update')->name('profil.update');
 });
-
-Route::patch('editprofil', 'App\Http\Controllers\AkunController@update')
-        ->name('updateprofil');
-

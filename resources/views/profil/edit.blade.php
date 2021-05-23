@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Edit Profil') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('updateprofil') }}">
+                    <form method="POST" action="{{ route('profil.update') }}">
                         @method('patch')
                         @csrf
 
@@ -44,9 +44,12 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <a type="submit" class="btn btn-primary" href="{{route('updateprofil')}}">
+                                {{-- <a type="submit" class="btn btn-primary" href="{{url('profil/update')}}">
                                     {{ __('Update') }}
-                                </a>
+                                </a> --}}
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Update') }}
+                                </button>
                             </div>
                         </div>
                     </form>
