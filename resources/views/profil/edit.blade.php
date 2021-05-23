@@ -5,7 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Edit Profil') }}</div>
+                <div class="card-header">{{ __('Edit Profil') }}
+                    <a type="submit" class="btn btn-danger float-right" href="{{url('profil/hapus/{id}')}}">
+                        {{ __('Hapus') }}
+                    </a>
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('profil.update') }}">
@@ -43,7 +47,7 @@
 
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-3 offset-md-4 ">
                                 {{-- <a type="submit" class="btn btn-primary" href="{{url('profil/update')}}">
                                     {{ __('Update') }}
                                 </a> --}}
@@ -51,6 +55,8 @@
                                     {{ __('Update') }}
                                 </button>
                             </div>
+                        </div>
+
                         </div>
                     </form>
                 </div>

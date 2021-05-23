@@ -40,4 +40,12 @@ class AkunController extends Controller
 
         return redirect('profil');
     }
+    public function hapus($id)
+    {
+        // menghapus data user berdasarkan id yang dipilih
+        $user = Auth::user();
+        $user ->delete();
+        // alihkan halaman ke halaman homepage
+        return redirect('register')->with('message', 'Akun Anda berhasil dihapus, silakan melakukan registrasi akun kembali!');
+    }
 }
