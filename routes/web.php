@@ -44,5 +44,6 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 
-Route::get('pos/buat','App\Http\Controllers\PostController@index');
+Route::get('pos/buat','App\Http\Controllers\PostController@buat');
 Route::post('pos/simpan', 'App\Http\Controllers\PostController@simpan') ->name('pos.simpan');
+Route::get('pos','App\Http\Controllers\PostController@index');

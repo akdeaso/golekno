@@ -12,13 +12,15 @@ class PostController extends Controller
     public function index()
     {
         $post = DB::table('posts')->get();
-        return view('pos/buat', ['posts' => $post]);
+        return view('homepage', ['posts' => $post]);
     }
 
-    // public function buat()
-    // {
-    //     return redirect('pos/buat');
-    // }
+    public function buat()
+    {
+
+        return redirect('pos/buat');
+
+    }
 
     public function simpan(Request $request)
     {
