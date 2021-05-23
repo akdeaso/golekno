@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Profil Diri') }}
-                    <a type="button" class="btn btn-primary" href="{{url('profil/edit/{id}')}}"> Edit</a>
+                    <a type="button" class="btn btn-primary float-right" href="{{url('profil/edit/{id}')}}"> Edit</a>
             </div>
                 <div class="card-body">
                     <div class="container">
