@@ -17,30 +17,23 @@ class PostController extends Controller
 
     public function buat()
     {
-
-        return redirect('pos/buat');
-
+        return view('pos/buat');
     }
 
     public function simpan(Request $request)
     {
-        DB::table ('posts') ->insert([
+        DB::table('posts')->insert([
             'Nama' => $request->Nama,
             'JenisPost' => $request->JenisPost,
             'Tanggal' => $request->Tanggal,
-            'Tempat' => $request ->Tempat,
-            'Gender' => $request ->Gender,
-            'Umur' => $request ->Umur,
-            'Tinggi' => $request ->Tinggi,
-            'Berat' => $request ->Berat,
-            'Foto' => $request ->Foto,
-            'FotoTambahan' => $request ->FotoTambahan,
+            'Tempat' => $request->Tempat,
+            'Gender' => $request->Gender,
+            'Umur' => $request->Umur,
+            'Tinggi' => $request->Tinggi,
+            'Berat' => $request->Berat,
+            'Foto' => $request->Foto,
+            'FotoTambahan' => $request->FotoTambahan,
         ]);
-        return redirect('/');
+        return redirect('homepage');
     }
-
-
-
 }
-
-
