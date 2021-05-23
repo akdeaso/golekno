@@ -28,7 +28,9 @@
                                 Berat : {{$p->Berat}} <br>
 
                             </p>
-                            <a href="#" class="btn btn-primary">Laporkan!</a>
+                            <a href="/pos/edit/{{$p->id}}" class="btn btn-primary">Edit</a>
+                            <a href="#" class="btn btn-warning">Laporkan!</a>
+                            <a href="/pos/delete/{{$p->id}}" class="btn btn-danger">Hapus</a>
                             </div>
                         </div>
 
