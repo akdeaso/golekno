@@ -27,14 +27,6 @@ class PosController extends Controller
         return redirect('');
     }
 
-    public function edit(Request $request)
-    {
-    }
-
-    public function hapus($id)
-    {
-    }
-
     public function simpan(Request $request)
     {
         DB::table('pos')->insert([
@@ -51,6 +43,38 @@ class PosController extends Controller
             'statuspos' => $request->statuspos,
             'tanggalselesai' => $request->tanggalselesai
         ]);
-        return redirect('/');
+        return redirect('');
+    }
+
+    public function edit($id)
+    {
+        $pos = DB::table('pos')->where('idpos', $id)->get();
+        return view('pos.edit', ['posts' => $pos]);
+    }
+
+    public function update(Request $request)
+    {
+        DB::table('pos')->where('idpos',$request->id)->update([
+            'tipepos' => $request->tipepos,
+            'foto' => $request->foto,
+            'gender' => $request->gender,
+            'umur' => $request->umur,
+            'tinggibadan' => $request->tinggibadan,
+            'deskripsi' => $request->deskripsi,
+            'kontak' => $request->kontak,
+            'nama' => $request->nama,
+            'tanggal' => $request->tanggal,
+            'tempat' => $request->tempat,
+            'statuspos' => $request->statuspos,
+            'tanggalselesai' => $request->tanggalselesai
+            ]);
+        return redirect('');
+    }
+
+    public function hapus($id)
+    {
+        DB::table('pos')->where('idpos', $id)->delete();
+        return redirect('');
+        //trigger autodelete pos yang sudah selesai >1minggu
     }
 }
