@@ -10,6 +10,7 @@ use App\Http\Requests\PasswordRequest;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Auth;
 
 class AkunController extends Controller
 {
@@ -78,6 +79,13 @@ class AkunController extends Controller
         }
 
         auth()->user()->update($request->all());
+        $user = Auth::user();
+        $this->validate($request, [
+            'namaakun' => 'required',
+            'email' => 'required'
+        ]);
+        $input = $request->only('namaakun', 'email');
+        $user->update($input);
 
         return back()->withStatus(__('Profile successfully updated.'));
     }
