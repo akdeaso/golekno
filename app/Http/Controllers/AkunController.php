@@ -2,47 +2,94 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\ProfileRequest;
+use App\Http\Requests\PasswordRequest;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class AkunController extends Controller
 {
-    public function index()
+    // public function index()
+    // {
+    //     // $user = DB::table('users');
+    //     $user = Auth::user();
+    //     return view('profil.profil', ['users' => $user]);
+    // }
+
+    // public function edit(Request $request)
+    // {
+    //     // $user = DB::table('users');
+    //     return view('profil.edit', ['users' => $request->user()]);
+    // }
+
+    // public function update(Request $request)
+    // {
+    //     // $request->user()->update(
+    //     //     $request->all()
+    //     // );
+
+    //     $user = Auth::user();
+    //     $this->validate($request, [
+    //         'name' => 'required|max:255|unique:users,name,' . $user->id,
+    //         'email' => 'required|email|max:255|unique:users,email,' . $user->id,
+    //     ]);
+    //     $input = $request->only('name', 'email');
+    //     $user->update($input);
+
+    //     return redirect('profil');
+    // }
+    // public function hapus($id)
+    // {
+    //     // menghapus data user berdasarkan id yang dipilih
+    //     $user = Auth::user();
+    //     $user->delete();
+    //     // alihkan halaman ke halaman homepage
+    //     return redirect('register')->with('message', 'Akun Anda berhasil dihapus, silakan melakukan registrasi akun kembali!');
+    // }
+
+    // public function daftaruser(User $model)
+    // {
+    //     return view('admin.daftaruser');
+    // }
+
+    public function daftaruser()
     {
-        // $user = DB::table('users');
-        $user = Auth::user();
-        return view('profil.profil', ['users' => $user]);
+        return view('admin.daftaruser');
     }
 
-    public function edit(Request $request)
+    public function editUser()
     {
-        // $user = DB::table('users');
-        return view('profil.edit', ['users' => $request->user()]);
+        return view('user.profile.edit');
     }
 
-    public function update(Request $request)
+    public function editAdmin()
     {
-        // $request->user()->update(
-        //     $request->all()
-        // );
-
-        $user = Auth::user();
-        $this->validate($request, [
-            'name' => 'required|max:255|unique:users,name,' . $user->id,
-            'email' => 'required|email|max:255|unique:users,email,' . $user->id,
-        ]);
-        $input = $request->only('name', 'email');
-        $user->update($input);
-
-        return redirect('profil');
+        return view('profile.edit');
     }
-    public function hapus($id)
+
+    public function update(ProfileRequest $request)
     {
-        // menghapus data user berdasarkan id yang dipilih
-        $user = Auth::user();
-        $user ->delete();
-        // alihkan halaman ke halaman homepage
-        return redirect('register')->with('message', 'Akun Anda berhasil dihapus, silakan melakukan registrasi akun kembali!');
+        if (auth()->user()->jenisakun == 0) {
+            return back()->withErrors(['not_allow_profile' => __('You are not allowed to change data for a default user.')]);
+        }
+
+        auth()->user()->update($request->all());
+
+        return back()->withStatus(__('Profile successfully updated.'));
+    }
+
+    public function password(PasswordRequest $request)
+    {
+        if (auth()->user()->jenisakun == 0) {
+            return back()->withErrors(['not_allow_password' => __('You are not allowed to change the password for a default user.')]);
+        }
+
+        auth()->user()->update(['password' => Hash::make($request->get('password'))]);
+
+        return back()->withPasswordStatus(__('Password successfully updated.'));
     }
 }
