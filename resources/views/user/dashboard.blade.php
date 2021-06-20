@@ -13,7 +13,7 @@
                                 <h3 class="mb-0">Info Hilang</h3>
                             </div>
                             <div class="col text-right">
-                                <a href="#!" class="btn btn-sm btn-primary">Tambah Pos</a>
+                                <a href="{{route ('posUser.tambah')}}" class="btn btn-sm btn-primary">Tambah Pos</a>
                             </div>
                         </div>
                     </div>

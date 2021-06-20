@@ -15,6 +15,51 @@ class PosController extends Controller
         return view('', ['pos' => $pos]);
     }
 
+    public function tambahPos()
+    {
+        $pos = DB::table('pos')->get();
+        return view('user.tambahpos', ['pos' => $pos]);
+    }
+
+    public function simpan(Request $request)
+    {
+        DB::table('pos')->insert([
+            'idakun' => auth()->user()->idakun,
+            'flagcounter' => '0',
+            'statuspos' => '0',
+            'tipepos' => $request->tipepos,
+            'foto' => $request->foto,
+            'gender' => $request->gender,
+            'umur' => $request->umur,
+            'tinggibadan' => $request->tinggibadan,
+            'deskripsi' => $request->deskripsi,
+            'kontak' => $request->kontak,
+            'nama' => $request->nama,
+            'tanggal' => $request->tanggal,
+            'tempat' => $request->tempat,
+            'created_at' => DB::raw('now()'),
+            'updated_at' => DB::raw('now()'),
+        ]);
+        return redirect('home');
+    }
+
+    public function update(Request $request)
+    {
+        DB::table('pos')->where('idpos', $request->id)->update([
+            'tipepos' => $request->tipepos,
+            'foto' => $request->foto,
+            'gender' => $request->gender,
+            'umur' => $request->umur,
+            'tinggibadan' => $request->tinggibadan,
+            'deskripsi' => $request->deskripsi,
+            'kontak' => $request->kontak,
+            'nama' => $request->nama,
+            'tanggal' => $request->tanggal,
+            'tempat' => $request->tempat,
+        ]);
+        return redirect('user.dashboard');
+    }
+
     public function cari()
     {
     }
@@ -28,48 +73,10 @@ class PosController extends Controller
         return redirect('');
     }
 
-    public function simpan(Request $request)
-    {
-        DB::table('pos')->insert([
-            'tipepos' => $request->tipepos,
-            'foto' => $request->foto,
-            'gender' => $request->gender,
-            'umur' => $request->umur,
-            'tinggibadan' => $request->tinggibadan,
-            'deskripsi' => $request->deskripsi,
-            'kontak' => $request->kontak,
-            'nama' => $request->nama,
-            'tanggal' => $request->tanggal,
-            'tempat' => $request->tempat,
-            'statuspos' => $request->statuspos,
-            'tanggalselesai' => $request->tanggalselesai
-        ]);
-        return redirect('');
-    }
-
     public function edit($id)
     {
         $pos = DB::table('pos')->where('idpos', $id)->get();
         return view('pos.edit', ['posts' => $pos]);
-    }
-
-    public function update(Request $request)
-    {
-        DB::table('pos')->where('idpos',$request->id)->update([
-            'tipepos' => $request->tipepos,
-            'foto' => $request->foto,
-            'gender' => $request->gender,
-            'umur' => $request->umur,
-            'tinggibadan' => $request->tinggibadan,
-            'deskripsi' => $request->deskripsi,
-            'kontak' => $request->kontak,
-            'nama' => $request->nama,
-            'tanggal' => $request->tanggal,
-            'tempat' => $request->tempat,
-            'statuspos' => $request->statuspos,
-            'tanggalselesai' => $request->tanggalselesai
-            ]);
-        return redirect('');
     }
 
     public function hapus($id)
