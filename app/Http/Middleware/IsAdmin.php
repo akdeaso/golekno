@@ -16,7 +16,7 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->user()->jenisakun == 0) {
+        if (auth()->user()->jenisakun == 1) {
             return $next($request);
         }
         return redirect('home')->with('error', 'Anda tidak dapat mengakses halaman ini!');
