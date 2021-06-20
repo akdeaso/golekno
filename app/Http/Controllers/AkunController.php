@@ -59,7 +59,8 @@ class AkunController extends Controller
 
     public function daftaruser()
     {
-        return view('admin.daftaruser');
+        $akun = DB::table('akun')->get();
+        return view('admin.daftaruser', ['akun' => $akun]);
     }
 
     public function editUser()

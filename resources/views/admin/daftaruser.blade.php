@@ -27,16 +27,13 @@
                                     <th scope="col">Tipe</th>
                                     <th scope="col"></th>
                                 </tr>
+                                @foreach($akun as $p)
                             </thead>
                             <tbody>
                                 <tr>
-                                    <th scope="row">
-                                    </th>
-                                    </td>
-                                    <td>
-                                    </td>
-                                    <td>
-                                    </td>
+                                    <th scope="row">{{ $p->namaakun }}</th>
+                                    <td>{{ $p->email }}</td>
+                                    <td>{{ $p->jenisakun }}</td>
                                     <td class="text-right">
                                         <div class="dropdown">
                                             <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -48,6 +45,7 @@
                                         </div>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
