@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+
 class HomeController extends Controller
 {
     /**
@@ -21,7 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('user.dashboard');
+        $pos = DB::table('pos')->get();
+        return view('user.dashboard', ['pos' => $pos]);
     }
 
     public function indexAdmin()

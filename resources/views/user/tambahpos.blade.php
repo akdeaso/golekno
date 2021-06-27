@@ -17,7 +17,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{ route('posUser.simpan') }}" autocomplete="off">
+                        <form method="post" action="{{ route('posUser.simpan') }}" autocomplete="off" enctype="multipart/form-data">
                             @csrf
                             <h6 class="heading-small text-muted mb-4">{{ __('Pilih Tipe Pos') }}</h6>
                             <div class="pl-lg-4">

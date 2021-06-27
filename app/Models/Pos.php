@@ -12,6 +12,9 @@ class Pos extends Model
     protected $table = "pos";
     protected $primaryKey = 'idpos';
     protected $fillable = [
+        'idakun',
+        'flagcounter',
+        'statuspos',
         'tipepos',
         'foto',
         'gender',
