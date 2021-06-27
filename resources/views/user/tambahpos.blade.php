@@ -45,7 +45,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-control-label" for="umur">{{ __('Umur') }}</label>
-                                    <input type="number" name="umur" id="umur" class="form-control form-control-alternative" placeholder="Nama" required>
+                                    <input type="number" name="umur" id="umur" class="form-control form-control-alternative" placeholder="Umur" required>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-control-label" for="tinggibadan">{{ __('Tinggi Badan') }}</label>
