@@ -1,22 +1,49 @@
-@extends('user.layouts.app', ['class' => 'bg-default'])
+@extends('user.layouts.app')
 
 @section('content')
-    <div class="header bg-gradient-primary py-7 py-lg-8">
-        <div class="container">
-            <div class="header-body text-center mt-7 mb-7">
-                <div class="row justify-content-center">
-                    <div class="col-lg-5 col-md-6">
-                        <h1 class="text-white">{{ __('Ini adalah view orang ditemukan.') }}</h1>
+    @include('user.layouts.headers.cards')
+
+    <div class="container-fluid mt--9">
+        <div class="row mt-5">
+            <div class="col-xl mb-3">
+                <div class="card shadow">
+                    <div class="card-header border-0">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h3 class="mb-0">Info Orang Ditemukan</h3>
+                            </div>
+                            <div class="col text-right">
+                                <a href="{{route ('posUser.tambah')}}" class="btn btn-sm btn-primary">Tambah Pos</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            @foreach ($pos as $p)
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 pl-2 pr-2">
+                                <div class="card mb-3">
+                                    <img class="card-img-top" src="{{ url('/image/'.$p->foto) }}" alt="Card image cap" style="width: 300; height: 190px; object-fit: cover;" sizes="(max-width: 286pxrem) 100vw, 286px">
+                                    <div class="card-body" style="max-height: 100%">
+                                        <h5 class="card-title">{{$p->nama}}</h5>
+                                        <p class="card-text">Dilaporkan pada: {{$p->created_at}}</p>
+                                        <a href="#" class="btn btn-primary">Detail</a>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="separator separator-bottom separator-skew zindex-100">
-            <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
-            </svg>
-        </div>
-    </div>
 
-    <div class="container mt--10 pb-5"></div>
+        @include('user.layouts.footers.auth')
+    </div>
 @endsection
+
+@push('js')
+    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
+    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
+@endpush
+
+

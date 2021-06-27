@@ -46,12 +46,14 @@ class HomeController extends Controller
     //view hilang user
     public function hilangUser()
     {
-        return view('user.hilang');
+        $pos = DB::table('pos')->where('tipepos', '=', 1)->get();
+        return view('user.hilang', ['pos' => $pos]);
     }
 
     public function ditemukanUser()
     {
-        return view('user.ditemukan');
+        $pos = DB::table('pos')->where('tipepos', '=', 0)->get();
+        return view('user.ditemukan', ['pos' => $pos]);
     }
 
     public function adminHome()
