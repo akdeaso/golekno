@@ -29,7 +29,8 @@ class HomeController extends Controller
 
     public function indexAdmin()
     {
-        return view('admin.dashboard');
+        $pos = DB::table('pos')->get();
+        return view('admin.dashboard', ['pos' => $pos]);
     }
 
     //view hilang admin

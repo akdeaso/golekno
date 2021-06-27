@@ -36,34 +36,56 @@
                                     <th scope="col">Tanggal Selesai</th>
                                 </tr>
                             </thead>
+                            @foreach ($pos as $p)
                             <tbody>
                                 <tr>
                                     <th scope="row">
+                                        {{$p -> nama}}
                                     </th>
                                     <td>
+                                      @if ($p -> tipepos == 1)
+                                          Orang Hilang
+                                      @else
+                                          Orang Ditemukan
+                                      @endif
                                     </td>
                                     <td>
+                                        {{$p -> flagcounter}}
                                     </td>
                                     <td>
+                                     @if ($p -> gender == 1)
+                                          Laki-Laki
+                                      @else
+                                          Perempuan
+                                      @endif
                                     </td>
                                     <td>
+                                        {{$p -> umur}}
                                     </td>
                                     <td>
+                                        {{$p -> tinggibadan}}
                                     </td>
                                     <td>
+                                        {{$p -> deskripsi}}
                                     </td>
                                     <td>
+                                        {{$p -> kontak}}
                                     </td>
                                     <td>
+                                        {{$p -> tanggal}}
                                     </td>
                                     <td>
+                                        {{$p -> tempat}}
                                     </td>
                                     <td>
+                                        {{$p -> statuspos}}
                                     </td>
                                     <td>
+                                        {{$p -> tanggalselesai}}
                                     </td>
                                 </tr>
                             </tbody>
+                            @endforeach
                         </table>
                     </div>
                 </div>
