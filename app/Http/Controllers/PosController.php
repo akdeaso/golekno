@@ -25,7 +25,7 @@ class PosController extends Controller
     public function simpan(Request $request)
     {
         $this->validate($request, [
-            'foto' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
+            'foto' => 'required|file|image|mimes:jpeg,png,jpg',
         ]);
         $foto = $request->file('foto');
         $nama_file = time() . "_" . $foto->getClientOriginalName();
