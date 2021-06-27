@@ -20,13 +20,20 @@
                     <div class="container">
                         <div class="row">
                             @foreach ($pos as $p)
-                            <div class="col">
-                                <div class="card mb-3" style="width: 18rem;">
-                                    <img class="card-img-top" src="{{ url('/image/'.$p->foto) }}" alt="Card image cap">
-                                    <div class="card-body">
-                                      <h5 class="card-title">{{$p->nama}}</h5>
-                                      <p class="card-text">{{$p->deskripsi}}</p>
-                                      <a href="#" class="btn btn-primary">Detail</a>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 pl-2 pr-2">
+                                <div class="card mb-3">
+                                    <div class="card-header">
+                                        @if ($p->tipepos == 1)
+                                            Orang Hilang
+                                        @else
+                                            Orang Ditemukan
+                                        @endif
+                                    </div>
+                                    <img class="card-img-top" src="{{ url('/image/'.$p->foto) }}" alt="Card image cap" style="width: 300; height: 190px; object-fit: cover;" sizes="(max-width: 286pxrem) 100vw, 286px">
+                                    <div class="card-body" style="max-height: 100%">
+                                        <h5 class="card-title">{{$p->nama}}</h5>
+                                        <p class="card-text">Dilaporkan pada: {{$p->created_at}}</p>
+                                        <a href="#" class="btn btn-primary">Detail</a>
                                     </div>
                                 </div>
                             </div>

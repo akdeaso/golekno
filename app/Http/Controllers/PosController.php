@@ -22,27 +22,6 @@ class PosController extends Controller
         return view('user.tambahpos', ['pos' => $pos]);
     }
 
-    // public function simpanBU(Request $request)
-    // {
-    //     DB::table('pos')->insert([
-    //         'idakun' => auth()->user()->idakun,
-    //         'flagcounter' => '0',
-    //         'statuspos' => '0',
-    //         'tipepos' => $request->tipepos,
-    //         'foto' => $request->foto,
-    //         'gender' => $request->gender,
-    //         'umur' => $request->umur,
-    //         'tinggibadan' => $request->tinggibadan,
-    //         'deskripsi' => $request->deskripsi,
-    //         'kontak' => $request->kontak,
-    //         'nama' => $request->nama,
-    //         'tanggal' => $request->tanggal,
-    //         'tempat' => $request->tempat,
-    //         'created_at' => DB::raw('now()'),
-    //         'updated_at' => DB::raw('now()'),
-    //     ]);
-    // }
-
     public function simpan(Request $request)
     {
         $this->validate($request, [

@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="custom-file">
                                     <label class="form-control-label" for="foto">Foto</label>
-                                    <input type="file" class="form-control-file" id="foto" name="foto">
+                                    <input type="file" class="form-control-file" id="image" name="foto">
                                   </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success mt-4">{{ __('Publikasikan') }}</button>
