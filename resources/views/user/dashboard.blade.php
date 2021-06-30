@@ -28,6 +28,14 @@
                                         @else
                                             Orang Ditemukan
                                         @endif
+                                            <div class="dropdown float-right" >
+                                                <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                    <a class="dropdown-item" href="">Edit</a>
+                                                </div>
+                                            </div>
                                     </div>
                                     <img class="card-img-top" src="{{ url('/image/'.$p->foto) }}" alt="Card image cap" style="width: 300; height: 190px; object-fit: cover;" sizes="(max-width: 286pxrem) 100vw, 286px">
                                     <div class="card-body" style="max-height: 100%">
