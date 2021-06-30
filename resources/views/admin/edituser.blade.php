@@ -1,9 +1,9 @@
-@extends('layouts.app', ['title' => __('User Profile')])
+@extends('layouts.app', ['title' => __('Edit Akun')])
 
 @section('content')
     @include('admin.partials.header', [
         'title' => __('Hello') . ' '. auth()->user()->name,
-        'description' => __('This is your profile page. You can see the progress you\'ve made with your work and manage your projects or assigned tasks'),
+        'description' => __('Ini adalah halaman untuk merubah informasi akun dari user yang ada'),
         'class' => 'col-lg-7'
     ])
 
@@ -21,7 +21,7 @@
                         <form method="post" action="{{ route('profilAdmin.updateuser') }}" autocomplete="off" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="idakun" value="{{ $p->idakun }}">
-                            <h6 class="heading-small text-muted mb-4">{{ __('Biodata') }}</h6>
+                            <h6 class="heading-small text-muted mb-4">{{ __('Informasi Akun') }}</h6>
                             <div class="pl-lg-4">
                                 <div class="form-group">
                                     <label class="form-control-label" for="namaakun">{{ __('Nama') }}</label>
