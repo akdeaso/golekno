@@ -63,30 +63,51 @@ class AkunController extends Controller
         return view('admin.daftaruser', ['akun' => $akun]);
     }
 
-    public function editUser()
+    public function editUser(Request $request)
     {
-        return view('user.profile.edit');
+        //$akun = User::get();
+        return view('user.profile.edit', ['akun' => $request -> user()]);
     }
 
     public function editAdmin()
     {
         return view('profile.edit');
     }
+    public function editDaftarUser($idakun)
+    {
+        //DB::table('akun')->
+        $akun =  User::where('idakun',$idakun)->get();
+        return view('admin.edituser', ['akun' => $akun]);
+    }
+    public function updateDaftarUser(Request $request)
+    {
+        User::where('idakun', $request->idakun)->update([
+            'namaakun' => $request->namaakun,
+            'email' => $request->email,
+            'jenisakun'=>$request->jenisakun
+        ]);
+        return redirect ('/daftaruser');
+    }
 
     public function update(ProfileRequest $request)
     {
-        if (auth()->user()->jenisakun == 0) {
-            return back()->withErrors(['not_allow_profile' => __('You are not allowed to change data for a default user.')]);
-        }
+        // if (auth()->user()->jenisakun == 0) {
+        //     return back()->withErrors(['not_allow_profile' => __('You are not allowed to change data for a default user.')]);
+        // }
 
-        auth()->user()->update($request->all());
-        $user = Auth::user();
-        $this->validate($request, [
-            'namaakun' => 'required',
-            'email' => 'required'
-        ]);
-        $input = $request->only('namaakun', 'email');
-        $user->update($input);
+        // auth()->user()->update($request->all());
+        // $user = Auth::user();
+        // $this->validate($request, [
+        //     'namaakun' => 'required',
+        //     'email' => 'required'
+        // ]);
+        // $input = $request->only('namaakun', 'email');
+        // $user->update($input);
+
+        $request->user()->update(
+            $request->all()
+        );
+
 
         return back()->withStatus(__('Profile successfully updated.'));
     }
@@ -101,4 +122,6 @@ class AkunController extends Controller
 
         return back()->withPasswordStatus(__('Password successfully updated.'));
     }
+
+
 }

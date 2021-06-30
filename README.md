@@ -12,7 +12,7 @@ Golekno adalah aplikasi berbasis web yang dikembangkan oleh kelompok 2 dari RBPL
 7. Edit pos: Andhika Prasandy Rachman (05211940000055) -> sudah implementasi
 8. Tinjau pos (admin): M. Yusuf Sulaiman (05211940000014)
 9. Edit akun: Arifal Akmal (05211940000144)
-10. Manajemen akun admin: Arifal Akmal (05211940000144)
+10. Manajemen akun admin: Arifal Akmal (05211940000144) -> sudah implementasi
 11. Bookmark pos: Muhammad Rafif (05211940000015)
 12. Arsip pos: Andhika Prasandy Rachman (05211940000055)
  
