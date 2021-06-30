@@ -36,6 +36,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('profil/user/password', ['as' => 'profilUser.password', 'uses' => 'App\Http\Controllers\AkunController@password']);
     Route::get('pos/tambah', ['as' => 'posUser.tambah', 'uses' => 'App\Http\Controllers\PosController@tambahPos']);
     Route::post('pos/simpan', ['as' => 'posUser.simpan', 'uses' => 'App\Http\Controllers\PosController@simpan']);
+    Route::get('pos/edit/{idpos}', ['as' => 'posUser.edit', 'uses' => 'App\Http\Controllers\PosController@edit']);
+    Route::post('pos/update', ['as' => 'posUser.update', 'uses' => 'App\Http\Controllers\PosController@update']);
 });
 
 Route::group(['middleware' => 'auth'], function () {

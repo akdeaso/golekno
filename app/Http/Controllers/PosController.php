@@ -52,20 +52,32 @@ class PosController extends Controller
         return redirect('home');
     }
 
+    public function edit($idpos)
+    {
+        $pos = DB::table('pos')->where('idpos', $idpos)->get();
+        return view('user.editpos', ['pos' => $pos]);
+    }
 
     public function update(Request $request)
     {
-        DB::table('pos')->where('idpos', $request->id)->update([
-            'tipepos' => $request->tipepos,
-            'foto' => $request->foto,
+        $this->validate($request, [
+            'foto' => 'required|file|image|mimes:jpeg,png,jpg',
+        ]);
+        $foto = $request->file('foto');
+        $nama_file = time() . "_" . $foto->getClientOriginalName();
+        // isi dengan nama folder tempat kemana file diupload
+        $tujuan_upload = 'image';
+        $foto->move($tujuan_upload, $nama_file);
+        DB::table('pos')->where('idpos', $request->idpos)->update([
+            'nama' => $request->nama,
             'gender' => $request->gender,
             'umur' => $request->umur,
             'tinggibadan' => $request->tinggibadan,
             'deskripsi' => $request->deskripsi,
             'kontak' => $request->kontak,
-            'nama' => $request->nama,
             'tanggal' => $request->tanggal,
             'tempat' => $request->tempat,
+            'foto' => $request->foto,
         ]);
         return redirect('user.dashboard');
     }
@@ -81,12 +93,6 @@ class PosController extends Controller
     public function buat()
     {
         return redirect('');
-    }
-
-    public function edit($id)
-    {
-        $pos = DB::table('pos')->where('idpos', $id)->get();
-        return view('pos.edit', ['posts' => $pos]);
     }
 
     public function hapus($id)
