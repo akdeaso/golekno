@@ -23,41 +23,39 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $pos = DB::table('pos')->get();
+        $pos = DB::table('pos')->orderBy('updated_at', 'desc')->get();
         return view('user.dashboard', ['pos' => $pos]);
     }
 
     public function indexAdmin()
     {
-        $pos = DB::table('pos')->get();
+        $pos = DB::table('pos')->orderBy('updated_at', 'desc')->get();
         return view('admin.dashboard', ['pos' => $pos]);
     }
 
     //view hilang admin
     public function hilang()
     {
-        //return view('admin.hilang');
-        $pos = DB::table('pos')->where('tipepos', '=', 1)->get();
+        $pos = DB::table('pos')->where('tipepos', '=', 1)->orderBy('updated_at', 'desc')->get();
         return view('admin.hilang', ['pos' => $pos]);
     }
 
     public function ditemukan()
     {
-        //return view('admin.ditemukan');
-        $pos = DB::table('pos')->where('tipepos', '=', 0)->get();
+        $pos = DB::table('pos')->where('tipepos', '=', 0)->orderBy('updated_at', 'desc')->get();
         return view('admin.ditemukan', ['pos' => $pos]);
     }
 
     //view hilang user
     public function hilangUser()
     {
-        $pos = DB::table('pos')->where('tipepos', '=', 1)->get();
+        $pos = DB::table('pos')->where('tipepos', '=', 1)->orderBy('updated_at', 'desc')->get();
         return view('user.hilang', ['pos' => $pos]);
     }
 
     public function ditemukanUser()
     {
-        $pos = DB::table('pos')->where('tipepos', '=', 0)->get();
+        $pos = DB::table('pos')->where('tipepos', '=', 0)->orderBy('updated_at', 'desc')->get();
         return view('user.ditemukan', ['pos' => $pos]);
     }
 

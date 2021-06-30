@@ -77,9 +77,10 @@ class PosController extends Controller
             'kontak' => $request->kontak,
             'tanggal' => $request->tanggal,
             'tempat' => $request->tempat,
-            'foto' => $request->foto,
+            'foto' => $nama_file,
+            'updated_at' => DB::raw('now()'),
         ]);
-        return redirect('user.dashboard');
+        return redirect('home');
     }
 
     public function cari()

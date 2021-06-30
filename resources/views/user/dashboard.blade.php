@@ -22,7 +22,7 @@
                             @foreach ($pos as $p)
                             <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 pl-2 pr-2">
                                 <div class="card mb-3">
-                                    <div class="card-header">
+                                    <div class="card-header" style="font-size: 14px">
                                         @if ($p->tipepos == 1)
                                             Orang Hilang
                                         @else
@@ -33,7 +33,7 @@
                                                     <i class="fas fa-ellipsis-v"></i>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                    <a class="dropdown-item" href="">Edit</a>
+                                                    <a class="dropdown-item" href="/pos/edit/{{$p->idpos}}">Edit</a>
                                                 </div>
                                             </div>
                                     </div>

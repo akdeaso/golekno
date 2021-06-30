@@ -18,10 +18,10 @@
                     </div>
                     <div class="card-body">
                         @foreach($pos as $p)
-                        <form method="post" action="{{ route('posUser.simpan') }}" autocomplete="off" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('posUser.update') }}" autocomplete="off" enctype="multipart/form-data">
                             @csrf
-                            <h6 class="heading-small text-muted mb-4">{{ __('Pilih Tipe Pos') }}</h6>
-                            <input type="hidden" name="id" value="{{ $p->idpos }}"> <br/>
+                            <input type="hidden" name="idpos" value="{{ $p->idpos }}">
+                            <input type="hidden" name="tipepos" value="{{ $p->tipepos }}">
                             <h6 class="heading-small text-muted mb-4">{{ __('Biodata') }}</h6>
                             <div class="pl-lg-4">
                                 <div class="form-group">
@@ -45,7 +45,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-control-label" for="deskripsi">{{ __('Deskripsi') }}</label>
-                                    <textarea name="deskripsi" id="deskripsi" class="form-control form-control-alternative" placeholder="Deskripsi" value="{{ $p->deskripsi }}" required></textarea>
+                                    <textarea name="deskripsi" id="deskripsi" class="form-control form-control-alternative" placeholder="Deskripsi" required>{{ $p->deskripsi }}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-control-label" for="kontak">{{ __('Kontak') }}</label>
@@ -68,6 +68,7 @@
                                 </div>
                             </div>
                         </form>
+                        @endforeach
                     </div>
                 </div>
             </div>
