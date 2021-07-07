@@ -2,8 +2,8 @@
 
 @section('content')
     @include('user.partials.header', [
-        'title' => __('Hello') . ' '. auth()->user()->name,
-        'description' => __('This is your profile page. You can see the progress you\'ve made with your work and manage your projects or assigned tasks'),
+        'title' => __('Halo') . ' '. auth()->user()->namaakun,
+        'description' => __('Ini adalah halaman edit pos, di sini kamu dapat mengedit pos yang telah kamu buat.'),
         'class' => 'col-lg-7'
     ])
 

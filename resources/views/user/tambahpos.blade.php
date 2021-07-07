@@ -2,8 +2,8 @@
 
 @section('content')
     @include('user.partials.header', [
-        'title' => __('Hello') . ' '. auth()->user()->name,
-        'description' => __('This is your profile page. You can see the progress you\'ve made with your work and manage your projects or assigned tasks'),
+        'title' => __('Halo') . ' '. auth()->user()->namaakun,
+        'description' => __('Ini adalah halaman tambah pos, di sini kamu dapat menambah pos untuk melaporkan orang yang hilang atau ditemukan.'),
         'class' => 'col-lg-7'
     ])
 
@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-control-label" for="tanggal">{{ __('Tanggal Hilang atau Ditemukan') }}</label>
-                                    <input type="date" name="tanggal" id="tanggal" class="form-control form-control-alternative">
+                                    <input type="date" name="tanggal" id="tanggal" class="form-control form-control-alternative datepicker">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-control-label" for="tempat">{{ __('Tempat') }}</label>
