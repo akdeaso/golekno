@@ -12,9 +12,7 @@
                             <div class="col">
                                 <h3 class="mb-0">Info Orang Hilang</h3>
                             </div>
-                            <div class="col text-right">
-                                <a href="{{route ('posUser.tambah')}}" class="btn btn-sm btn-primary">Tambah Pos</a>
-                            </div>
+
                         </div>
                     </div>
                     <div class="container">

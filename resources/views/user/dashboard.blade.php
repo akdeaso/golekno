@@ -28,20 +28,13 @@
                                         @else
                                             Orang Ditemukan
                                         @endif
-                                            <div class="dropdown float-right" >
-                                                <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <i class="fas fa-ellipsis-v"></i>
-                                                </a>
-                                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                    <a class="dropdown-item" href="/pos/edit/{{$p->idpos}}">Edit</a>
-                                                </div>
-                                            </div>
+
                                     </div>
                                     <img class="card-img-top" src="{{ url('/image/'.$p->foto) }}" alt="Card image cap" style="width: 300; height: 190px; object-fit: cover;" sizes="(max-width: 286pxrem) 100vw, 286px">
                                     <div class="card-body" style="max-height: 100%">
                                         <h5 class="card-title">{{$p->nama}}</h5>
                                         <p class="card-text">Dilaporkan pada: {{$p->created_at}}</p>
-                                        <a href="#" class="btn btn-primary">Detail</a>
+                                        <a href="/pos/lihat/{{$p->idpos}}" class="btn btn-primary">Detail</a>
                                     </div>
                                 </div>
                             </div>
