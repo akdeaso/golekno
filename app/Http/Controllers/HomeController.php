@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $pos = DB::table('pos')->orderBy('updated_at', 'desc')->get();
+        $pos = DB::table('pos')->orderBy('updated_at', 'desc')->paginate(12);
         return view('user.dashboard', ['pos' => $pos]);
     }
 
@@ -36,26 +36,26 @@ class HomeController extends Controller
     //view hilang admin
     public function hilang()
     {
-        $pos = DB::table('pos')->where('tipepos', '=', 1)->orderBy('updated_at', 'desc')->get();
+        $pos = DB::table('pos')->where('tipepos', '=', 1)->orderBy('updated_at', 'desc')->paginate(12);
         return view('admin.hilang', ['pos' => $pos]);
     }
 
     public function ditemukan()
     {
-        $pos = DB::table('pos')->where('tipepos', '=', 0)->orderBy('updated_at', 'desc')->get();
+        $pos = DB::table('pos')->where('tipepos', '=', 0)->orderBy('updated_at', 'desc')->paginate(12);
         return view('admin.ditemukan', ['pos' => $pos]);
     }
 
     //view hilang user
     public function hilangUser()
     {
-        $pos = DB::table('pos')->where('tipepos', '=', 1)->orderBy('updated_at', 'desc')->get();
+        $pos = DB::table('pos')->where('tipepos', '=', 1)->orderBy('updated_at', 'desc')->paginate(12);
         return view('user.hilang', ['pos' => $pos]);
     }
 
     public function ditemukanUser()
     {
-        $pos = DB::table('pos')->where('tipepos', '=', 0)->orderBy('updated_at', 'desc')->get();
+        $pos = DB::table('pos')->where('tipepos', '=', 0)->orderBy('updated_at', 'desc')->paginate(12);
         return view('user.ditemukan', ['pos' => $pos]);
     }
 
@@ -66,15 +66,14 @@ class HomeController extends Controller
 
     public function lihatposuser($idpos)
     {
-        $pos = DB::table('pos')->where('idpos',$idpos)->get();
-        return view('user.lihatpos',['pos' => $pos ]);
+        $pos = DB::table('pos')->where('idpos', $idpos)->get();
+        return view('user.lihatpos', ['pos' => $pos]);
     }
 
 
     public function lihatposadmin($idpos)
     {
-        $pos = DB::table('pos')->where('idpos',$idpos)->get();
-        return view('admin.lihatpos',['idpos' => $idpos ]);
+        $pos = DB::table('pos')->where('idpos', $idpos)->get();
+        return view('admin.lihatpos', ['idpos' => $idpos]);
     }
-
 }

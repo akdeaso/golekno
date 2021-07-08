@@ -33,6 +33,11 @@
                             @endforeach
                         </div>
                     </div>
+                    <div class="container">
+                        <div class="pagination justify-content-center pagination-lg">
+                            {{ $pos->links() }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
