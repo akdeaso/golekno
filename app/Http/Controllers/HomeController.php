@@ -66,14 +66,22 @@ class HomeController extends Controller
 
     public function lihatposuser($idpos)
     {
-        $pos = DB::table('pos')->where('idpos', $idpos)->get();
+        $pos = DB::table('pos')
+        ->join('akun', 'pos.idakun', '=', 'akun.idakun')
+        ->select('pos.*', 'akun.namaakun')
+        ->where('idpos',$idpos)
+        ->get();
         return view('user.lihatpos', ['pos' => $pos]);
     }
 
 
     public function lihatposadmin($idpos)
     {
-        $pos = DB::table('pos')->where('idpos', $idpos)->get();
+        $pos = DB::table('pos')
+        ->join('akun', 'pos.idakun', '=', 'akun.idakun')
+        ->select('pos.*', 'akun.namaakun')
+        ->where('idpos',$idpos)
+        ->get();
         return view('admin.lihatpos', ['idpos' => $idpos]);
     }
 }

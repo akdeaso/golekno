@@ -38,6 +38,7 @@
                                         <img class="card-img-top" src="{{ url('/image/'.$p->foto) }}" alt="Card image cap" style="width: 300; height: 190px; object-fit: cover;" sizes="(max-width: 286pxrem) 100vw, 286px">
                                         <div class="card-body">
                                           <h1 class="card-title">{{$p->nama}}</h1>
+                                          <h4 class="card-text">Pos dibuat oleh : {{$p->namaakun}}</h4>
                                           <p class="card-text">
                                               @if ($p->tipepos ==1)
                                                   Tanggal Hilang : {{$p->tanggal}}
