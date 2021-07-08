@@ -83,8 +83,24 @@ class PosController extends Controller
         return redirect('home');
     }
 
-    public function cari()
+    //cari user
+    public function cari(Request $request)
     {
+        $cari = $request->cari;
+        $pos = DB::table('pos')
+            ->where('nama', 'like', "%" . $cari . "%")
+            ->paginate();
+        return view('user.dashboard', ['pos' => $pos]);
+    }
+
+    //cari admin
+    public function cariAdmin(Request $request)
+    {
+        $cari = $request->cari;
+        $pos = DB::table('pos')
+            ->where('nama', 'like', "%" . $cari . "%")
+            ->paginate();
+        return view('admin.dashboard', ['pos' => $pos]);
     }
 
     public function filter()

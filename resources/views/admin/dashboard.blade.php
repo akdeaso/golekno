@@ -87,6 +87,11 @@
                             </tbody>
                             @endforeach
                         </table>
+                        <div class="container mt-4">
+                            <div class="pagination">
+                                {{ $pos->links() }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
