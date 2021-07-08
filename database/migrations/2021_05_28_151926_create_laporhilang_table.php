@@ -22,6 +22,7 @@ class CreateLaporhilangTable extends Migration
             $table->string('kontak', 100);
             $table->string('tempatpenemuan', 100);
             $table->string('deskripsipenemuan', 100);
+            $table->timestamps();
         });
     }
 
