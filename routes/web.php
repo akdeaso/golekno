@@ -32,7 +32,7 @@ Route::get('/ditemukan', 'App\Http\Controllers\HomeController@ditemukanUser')->n
 Route::group(['middleware' => 'auth'], function () {
     // Route::resource('user', 'App\Http\Controllers\AkunController', ['except' => ['show']]);
     Route::get('profil/user/edit', ['as' => 'profilUser.edit', 'uses' => 'App\Http\Controllers\AkunController@editUser']);
-    Route::patch('profil/user', ['as' => 'profilUser.update', 'uses' => 'App\Http\Controllers\AkunController@update']);
+    Route::put('profil/user', ['as' => 'profilUser.update', 'uses' => 'App\Http\Controllers\AkunController@update']);
     Route::put('profil/user/password', ['as' => 'profilUser.password', 'uses' => 'App\Http\Controllers\AkunController@password']);
     Route::get('pos/tambah', ['as' => 'posUser.tambah', 'uses' => 'App\Http\Controllers\PosController@tambahPos']);
     Route::post('pos/simpan', ['as' => 'posUser.simpan', 'uses' => 'App\Http\Controllers\PosController@simpan']);

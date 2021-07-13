@@ -86,10 +86,11 @@ class AkunController extends Controller
         return view('user.profile.edit', ['akun' => $request->user()]);
     }
 
-    public function editAdmin()
+    public function editAdmin(Request $request)
     {
-        return view('profile.edit');
+        return view('profile.edit', ['akun' => $request->user()]);
     }
+
     public function editDaftarUser($idakun)
     {
         //DB::table('akun')->
@@ -108,25 +109,12 @@ class AkunController extends Controller
 
     public function update(ProfileRequest $request)
     {
-        // if (auth()->user()->jenisakun == 0) {
-        //     return back()->withErrors(['not_allow_profile' => __('You are not allowed to change data for a default user.')]);
-        // }
-
-        // auth()->user()->update($request->all());
-        // $user = Auth::user();
-        // $this->validate($request, [
-        //     'namaakun' => 'required',
-        //     'email' => 'required'
-        // ]);
-        // $input = $request->only('namaakun', 'email');
-        // $user->update($input);
-
-        $request->user()->update(
-            $request->all()
-        );
-
-
-        return back()->withStatus(__('Profile successfully updated.'));
+        $this->validate($request, [
+            'namaakun' => 'required',
+            'email' => 'required'
+        ]);
+        auth()->user()->update($request->all());
+        return back()->withStatus(__('Profil berhasil diperbarui.'));
     }
 
     public function password(PasswordRequest $request)
@@ -137,6 +125,6 @@ class AkunController extends Controller
 
         auth()->user()->update(['password' => Hash::make($request->get('password'))]);
 
-        return back()->withPasswordStatus(__('Password successfully updated.'));
+        return back()->withPasswordStatus(__('Password berhasil diperbarui.'));
     }
 }
