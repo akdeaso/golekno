@@ -50,4 +50,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('profil/admin/edituser/{idakun}', ['as' => 'profilAdmin.edituser', 'uses' => 'App\Http\Controllers\AkunController@editDaftarUser']);
     Route::post('profil/admin/updateuser', ['as' => 'profilAdmin.updateuser', 'uses' => 'App\Http\Controllers\AkunController@updateDaftarUser']);
     Route::get('admin/pos/cari', ['as' => 'posAdmin.cari', 'uses' => 'App\Http\Controllers\PosController@cariAdmin']);
+    Route::get('daftaruser/tambah', ['as' => 'tambahuser', 'uses' => 'App\Http\Controllers\AkunController@tambahuser']);
+    Route::post('daftaruser/simpan', ['as' => 'tambahuser.simpan', 'uses' => 'App\Http\Controllers\AkunController@simpan']);
 });

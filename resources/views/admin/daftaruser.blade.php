@@ -13,7 +13,7 @@
                                 <h3 class="mb-0">Daftar User</h3>
                             </div>
                             <div class="col text-right">
-                                <a href="#!" class="btn btn-sm btn-primary">Tambah</a>
+                                <a href="{{ route('tambahuser') }}" class="btn btn-sm btn-primary">Tambah</a>
                             </div>
                         </div>
                     </div>

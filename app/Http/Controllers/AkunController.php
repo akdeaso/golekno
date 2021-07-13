@@ -63,10 +63,27 @@ class AkunController extends Controller
         return view('admin.daftaruser', ['akun' => $akun]);
     }
 
+    public function tambahuser()
+    {
+        $akun = User::get();
+        return view('admin.tambahuser', ['akun' => $akun]);
+    }
+
+    public function simpan(Request $request)
+    {
+        User::create([
+            'namaakun' => $request->namaakun,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'jenisakun' => $request->jenisakun,
+        ]);
+        return redirect('/daftaruser');
+    }
+
     public function editUser(Request $request)
     {
         //$akun = User::get();
-        return view('user.profile.edit', ['akun' => $request -> user()]);
+        return view('user.profile.edit', ['akun' => $request->user()]);
     }
 
     public function editAdmin()
@@ -76,7 +93,7 @@ class AkunController extends Controller
     public function editDaftarUser($idakun)
     {
         //DB::table('akun')->
-        $akun =  User::where('idakun',$idakun)->get();
+        $akun =  User::where('idakun', $idakun)->get();
         return view('admin.edituser', ['akun' => $akun]);
     }
     public function updateDaftarUser(Request $request)
@@ -84,9 +101,9 @@ class AkunController extends Controller
         User::where('idakun', $request->idakun)->update([
             'namaakun' => $request->namaakun,
             'email' => $request->email,
-            'jenisakun'=>$request->jenisakun
+            'jenisakun' => $request->jenisakun
         ]);
-        return redirect ('/daftaruser');
+        return redirect('/daftaruser');
     }
 
     public function update(ProfileRequest $request)
@@ -122,6 +139,4 @@ class AkunController extends Controller
 
         return back()->withPasswordStatus(__('Password successfully updated.'));
     }
-
-
 }
