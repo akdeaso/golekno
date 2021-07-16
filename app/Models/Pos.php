@@ -26,4 +26,9 @@ class Pos extends Model
         'tanggal',
         'tempat',
     ];
+
+    public function laporhilang() {
+        return $this->hasOne('App\Models\Pos');
+  }
+
 }

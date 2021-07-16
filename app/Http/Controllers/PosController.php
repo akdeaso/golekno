@@ -49,7 +49,7 @@ class PosController extends Controller
             'created_at' => DB::raw('now()'),
             'updated_at' => DB::raw('now()'),
         ]);
-        return redirect('home');
+        return redirect('home')->withStatus(__('Pos berhasil dipublikasikan.'));
     }
 
     public function edit($idpos)

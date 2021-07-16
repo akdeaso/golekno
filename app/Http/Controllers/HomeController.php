@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use App\Models\laporhilang;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -71,8 +73,15 @@ class HomeController extends Controller
         ->select('pos.*', 'akun.namaakun')
         ->where('idpos',$idpos)
         ->get();
-        return view('user.lihatpos', ['pos' => $pos]);
+        $laporhilang = laporhilang::select("*")
+        ->join('akun','akun.idakun','=','laporhilang.idakun')
+        ->where("idpos", "=" ,$idpos)
+        ->get();
+        return view('user.lihatpos', ['pos' => $pos , 'laporhilang' => $laporhilang]);
     }
+
+
+
 
 
     public function lihatposadmin($idpos)
@@ -82,6 +91,10 @@ class HomeController extends Controller
         ->select('pos.*', 'akun.namaakun')
         ->where('idpos',$idpos)
         ->get();
-        return view('admin.lihatpos', ['idpos' => $idpos]);
+        $laporhilang = laporhilang::select("*")
+        ->join('akun','akun.idakun','=','laporhilang.idakun')
+        ->where("idpos", "=" ,$idpos)
+        ->get();
+        return view('admin.lihatpos', ['pos' => $pos , 'laporhilang' => $laporhilang , ]);
     }
 }

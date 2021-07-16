@@ -1,7 +1,7 @@
-@extends('user.layouts.app')
+@extends('layouts.app')
 
 @section('content')
-    @include('user.layouts.headers.cards')
+    @include('layouts.headers.cards')
 
         <div class="container-fluid mt--9">
             @foreach ($pos as $p)
@@ -19,18 +19,15 @@
                                         @endif
                                     </h3>
                                 </div>
-                                <div class="dropdown float-right" >
+                                {{-- <div class="dropdown float-right" >
                                     <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="fas fa-ellipsis-v"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                        @if ($p->idakun == auth()->user()->idakun)
                                         <a class="dropdown-item" href="/pos/edit/{{$p->idpos}}">Edit</a>
-                                        @else
                                         <a class="dropdown-item" href="#" style="color:#f5365c">Laporkan Pos</a>
-                                        @endif
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
 
@@ -64,7 +61,7 @@
                                           {{-- <a href="#" class="btn btn-primary">Lapor Info Terbaru</a> --}}
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+{{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
     Lapor Informasi Terbaru
   </button>
 
@@ -111,7 +108,7 @@
     </form>
       </div>
     </div>
-  </div>
+  </div> --}}
 
                                         </div>
                                       </div>
@@ -148,8 +145,9 @@
                                             @foreach ( $laporhilang as $l)
                                             <div class="alert alert-secondary" role="alert">
                                                 <strong>{{$l->created_at}} :</strong> Dilaporkan Terlihat di {{$l->tempatpenemuan}} dengan deskripsi : {{$l->deskripsipenemuan}} - <strong>Dilaporkan Oleh :</strong>
-
-                                                {{$l->namaakun}}
+                                                {{-- @foreach ($pelapor as $r)
+                                                {{$r->namaakun}}
+                                                @endforeach --}} {{$l->namaakun}}
                                             </div>
                                             @endforeach
                                         </div>
@@ -160,7 +158,7 @@
                     </div>
                 </div>
             </div>
-            @include('user.layouts.footers.auth')
+            @include('layouts.footers.auth')
             @endforeach
         </div>
 

@@ -38,6 +38,9 @@ class User extends Authenticatable
         'jenisakun',
     ];
 
+    public function yglapor() {
+        return $this->belongsTo('App\Models\laporhilang');
+  }
     /**
      * The attributes that should be cast to native types.
      *

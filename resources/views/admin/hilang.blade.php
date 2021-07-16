@@ -24,7 +24,7 @@
                                     <div class="card-body" style="max-height: 100%">
                                         <h5 class="card-title">{{$p->nama}}</h5>
                                         <p class="card-text">Dilaporkan pada: {{$p->created_at}}</p>
-                                        <a href="#" class="btn btn-primary">Detail</a>
+                                        <a href="pos/lihat/{{$p->idpos}}" class="btn btn-primary">Detail</a>
                                     </div>
                                 </div>
                             </div>
