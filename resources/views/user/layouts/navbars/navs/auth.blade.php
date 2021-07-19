@@ -35,6 +35,10 @@
                         <i class="ni ni-single-02"></i>
                         <span>{{ __('My profile') }}</span>
                     </a>
+                    <a href="/pos/daftarbookmark" class="dropdown-item">
+                        <i class="ni ni-book-bookmark"></i>
+                        <span>{{ __('My Bookmark') }}</span>
+                    </a>
                     <div class="dropdown-divider"></div>
                     <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">

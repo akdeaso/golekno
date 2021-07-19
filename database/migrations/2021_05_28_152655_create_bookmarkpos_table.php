@@ -14,6 +14,7 @@ class CreateBookmarkposTable extends Migration
     public function up()
     {
         Schema::create('bookmarkpos', function (Blueprint $table) {
+            $table->id('idbookmark');
             $table->bigInteger('idpos')->unsigned();
             $table->foreign('idpos')->references('idpos')->on('pos');
             $table->bigInteger('idakun')->unsigned();

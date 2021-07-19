@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Models\laporhilang;
 use App\Models\User;
+use App\Models\bookmarkpos;
 
 class HomeController extends Controller
 {
@@ -77,7 +78,12 @@ class HomeController extends Controller
         ->join('akun','akun.idakun','=','laporhilang.idakun')
         ->where("idpos", "=" ,$idpos)
         ->get();
-        return view('user.lihatpos', ['pos' => $pos , 'laporhilang' => $laporhilang]);
+        $bookmark = DB::table('bookmarkpos')
+        ->join('pos','pos.idpos','=', 'bookmarkpos.idpos')
+        ->select('pos.*', 'bookmarkpos.*')
+        ->where('bookmarkpos.idakun','pos.idakun')
+        ->get();
+        return view('user.lihatpos', ['pos' => $pos , 'laporhilang' => $laporhilang, 'bookmark' => $bookmark]);
     }
 
 
@@ -96,5 +102,19 @@ class HomeController extends Controller
         ->where("idpos", "=" ,$idpos)
         ->get();
         return view('admin.lihatpos', ['pos' => $pos , 'laporhilang' => $laporhilang , ]);
+    }
+
+    public function bookmarkuser()
+    {
+        // $bookmark = bookmarkpos::select("*")
+        // ->join('pos','pos.idpos','=','bookmarkpos.idpos')
+        // ->where('idakun',$idakun)
+        // ->get();
+        $bookmark = DB::table('bookmarkpos')
+        ->join('pos','pos.idpos','=', 'bookmarkpos.idpos')
+        ->select('pos.*', 'bookmarkpos.*')
+        ->where('bookmarkpos.idakun','=',auth()->user()->idakun)
+        ->get();
+        return view('user.daftarbookmark', ['bookmark' => $bookmark , ]);
     }
 }

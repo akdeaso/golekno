@@ -27,8 +27,12 @@ class Pos extends Model
         'tempat',
     ];
 
-    public function laporhilang() {
+    public function laporhilang()
+    {
         return $this->hasOne('App\Models\Pos');
-  }
-
+    }
+    public function bookmarkuser()
+    {
+        return $this->belongsTo('App\Models\Pos');
+    }
 }

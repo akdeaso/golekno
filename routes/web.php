@@ -42,6 +42,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('pos/cari', ['as' => 'posUser.cari', 'uses' => 'App\Http\Controllers\PosController@cari']);
     Route::get('/pos/laporhilangtambah', ['as' => 'laporhilang.tambah', 'uses' => 'App\Http\Controllers\LaporHilangController@tambahlapor']);
     Route::post('/pos/laporhilangsimpan', ['as' => 'laporhilang.simpan', 'uses' => 'App\Http\Controllers\LaporHilangController@simpanlapor']);
+    Route::get('/pos/tambahbookmark/{idpos}', ['as' => 'bookmark.tambah', 'uses' => 'App\Http\Controllers\BookmarkPosController@tambahbookmark']);
+    Route::post('/pos/simpanbookmark', ['as' => 'bookmark.simpan', 'uses' => 'App\Http\Controllers\BookmarkPosController@simpanbookmark']);
+    Route::get('/pos/daftarbookmark', ['as' => 'bookmark.daftar', 'uses' => 'App\Http\Controllers\HomeController@bookmarkuser']);
+    Route::get('/pos/hapusbookmark/{idbookmark}', ['as' => 'bookmark.hapus', 'uses' => 'App\Http\Controllers\BookmarkPosController@hapusbookmark']);
 });
 
 Route::group(['middleware' => 'auth'], function () {
