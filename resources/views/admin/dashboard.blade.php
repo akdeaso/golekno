@@ -158,7 +158,14 @@
                                         {{$a -> tempat}}
                                     </td>
                                     <td>
-                                        {{$a -> statuspos}}
+                                    @if ($a -> statuspos == 1)
+                                        Kasus sudah selesai
+                                    @elseif ($a -> statuspos == 2)
+                                        Data yang dilaporkan tidak
+                                        benar
+                                    @else
+                                        Lainnya
+                                    @endif
                                     </td>
                                     <td>
                                         {{$a -> created_at}}
