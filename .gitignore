@@ -1,3 +1,4 @@
 /public/image
+/vendor
 
 .phpunit.result.cache
