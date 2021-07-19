@@ -9,26 +9,25 @@ use Illuminate\Http\Request;
 
 class BookmarkPosController extends Controller
 {
-    public function tambahbookmark($idpos)
-    {
-        $bookmark = bookmarkpos::where('idpos',$idpos)->get();
-        return view('user.lihatpos', ['bookmark' => $bookmark]);
-        //ambil id akun, ambil id pos (bingung implementasi mengambil 2 id)
-    }
-    public function simpanbookmark(Request $request)
-    {
-        bookmarkpos::create([
-            'idpos' => $request->idpos,
-            'idakun' => auth()->user()->idakun,
-        ]);
-        return back()->withStatus(__('Informasi Tebaru Berhasil  Dilaporkan'));
-        //ambil id akun, ambil id pos (bingung implementasi mengambil 2 id)
+    protected $cid;
+    public function bookmark($idpos){
+
+        $this->cid = auth()->user()->idakun;
+        if (!bookmarkpos::where(['idpos'=>$idpos,'idakun'=>$this->cid])->exists()){
+            bookmarkpos::create(['idpos'=>$idpos,'idakun'=>$this->cid]);
+            return redirect()->back()->with('success', 'Bookmark berhasil ditambahkan');
+        } else {
+            return redirect()->back()->with('error', 'Bookmark sudah ditambahkan');
+        }
+
+
     }
     public function hapusbookmark($idbookmark)
     {
 	DB::table('bookmarkpos')->where('idbookmark',$idbookmark)->delete();
 
-	return back()->withStatus(__('Bookmark Telah Dihapus'));
+	return back()->with('success','Bookmark Telah Dihapus');
         //ambil id akun, ambil id pos (bingung implementasi mengambil 2 id)
     }
+
 }

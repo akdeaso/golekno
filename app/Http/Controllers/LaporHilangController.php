@@ -26,7 +26,7 @@ class LaporHilangController extends Controller
             'tempatpenemuan' => $request->tempatpenemuan,
             'deskripsipenemuan' => $request->deskripsipenemuan,
         ]);
-        return back()->withStatus(__('Informasi Tebaru Berhasil  Dilaporkan'));
+        return back()->with('success', 'Laporan terbaru berhasil ditambahkan');
     }
 
     public function hapuslaporhilang($id)

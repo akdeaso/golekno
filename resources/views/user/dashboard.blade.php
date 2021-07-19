@@ -13,31 +13,45 @@
                                 <h3 class="mb-0">Info Hilang</h3>
                             </div>
                             <div class="col text-right">
-                                <a href="{{route ('posUser.tambah')}}" class="btn btn-sm btn-primary">Tambah Pos</a>
+                                <a href="{{ route('posUser.tambah') }}" class="btn btn-sm btn-primary">Tambah Pos</a>
                             </div>
                         </div>
                     </div>
                     <div class="container">
                         <div class="row">
-                            @foreach ($pos as $p)
-                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 pl-2 pr-2">
-                                <div class="card mb-3">
-                                    <div class="card-header" style="font-size: 14px">
-                                        @if ($p->tipepos == 1)
-                                            Orang Hilang
-                                        @else
-                                            Orang Ditemukan
-                                        @endif
-
+                            <div class="col">
+                                @if (Session::has('success'))
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        {{ Session::get('success') }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
-                                    <img class="card-img-top" src="{{ url('/image/'.$p->foto) }}" alt="Card image cap" style="width: 300; height: 190px; object-fit: cover;" sizes="(max-width: 286pxrem) 100vw, 286px">
-                                    <div class="card-body" style="max-height: 100%">
-                                        <h5 class="card-title">{{$p->nama}}</h5>
-                                        <p class="card-text">Dilaporkan pada: {{$p->created_at}}</p>
-                                        <a href="/pos/lihat/{{$p->idpos}}" class="btn btn-primary">Detail</a>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="row">
+                            @foreach ($pos as $p)
+                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 pl-2 pr-2">
+                                    <div class="card mb-3">
+                                        <div class="card-header" style="font-size: 14px">
+                                            @if ($p->tipepos == 1)
+                                                Orang Hilang
+                                            @else
+                                                Orang Ditemukan
+                                            @endif
+
+                                        </div>
+                                        <img class="card-img-top" src="{{ url('/image/' . $p->foto) }}" alt="Card image cap"
+                                            style="width: 300; height: 190px; object-fit: cover;"
+                                            sizes="(max-width: 286pxrem) 100vw, 286px">
+                                        <div class="card-body" style="max-height: 100%">
+                                            <h5 class="card-title">{{ $p->nama }}</h5>
+                                            <p class="card-text">Dilaporkan pada: {{ $p->created_at }}</p>
+                                            <a href="/pos/lihat/{{ $p->idpos }}" class="btn btn-primary">Detail</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             @endforeach
                         </div>
                     </div>
@@ -58,5 +72,3 @@
     <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
     <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
 @endpush
-
-

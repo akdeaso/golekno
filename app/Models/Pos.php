@@ -33,6 +33,11 @@ class Pos extends Model
     }
     public function bookmarkuser()
     {
-        return $this->belongsTo('App\Models\Pos');
+        $cid = auth()->user()!=null ? auth()->user()->idakun : null;
+        return $this->belongsTo(bookmarkpos::class,'idbookmark','idpos')->where('idakun',$cid);
+    }
+    public function bookmark()
+    {
+        return $this->bookmarkuser()->selectRaw('idpos,count(*) as count')->groupBy('idpos');
     }
 }

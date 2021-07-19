@@ -49,7 +49,7 @@ class PosController extends Controller
             'created_at' => DB::raw('now()'),
             'updated_at' => DB::raw('now()'),
         ]);
-        return redirect('home')->withStatus(__('Pos berhasil dipublikasikan.'));
+        return redirect('home')->with('success','Pos berhasil dipublikasikan.');
     }
 
     public function edit($idpos)
@@ -80,7 +80,7 @@ class PosController extends Controller
             'foto' => $nama_file,
             'updated_at' => DB::raw('now()'),
         ]);
-        return redirect('home');
+        return redirect('home')->with('success', 'Pos berhasil diperbaharui');
     }
 
     //cari user

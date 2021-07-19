@@ -19,85 +19,10 @@
                                         @endif
                                     </h3>
                                 </div>
-                                <!-- Button trigger modal -->
-                                {{-- @foreach ($bookmark as $b)
-                                    @if ($b->idpos == $p->idpos)
-                                        <a class="btn btn-sm btn-icon-only text-dark" role="button" data-toggle="modal"
-                                            data-target="#bookmark">
-                                            <i class="ni ni-book-bookmark">
-                                            </i>
-                                        </a>
-                                    @else
-                                        <a class="btn btn-sm btn-icon-only text-light" role="button" data-toggle="modal"
-                                            data-target="#bookmark">
-                                            <i class="ni ni-book-bookmark">
-                                            </i>
-                                        </a>
-                                    @endif
-
-                                @endforeach --}}
-                                <a class="btn btn-sm btn-icon-only text-light" role="button" data-toggle="modal"
-                                            data-target="#bookmark">
-                                            <i class="ni ni-book-bookmark">
-                                            </i>
-                                        </a>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="bookmark" tabindex="-1" role="dialog"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Tambahkan Bookmark ?</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            {{-- @foreach ($bookmark as $v)
-                                                @if ($v->idpos == $v->idpos)
-                                                    <div class="modal-body">
-                                                        Bookmark Sudah Ditambahkan !
-                                                        <br/>Apakah anda ingin menghapus bookmark ?
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Close</button>
-                                                        <button type="button" class="btn btn-primary" href="/pos/hapusbookmark/{{$v->idbookmark}}">Hapus</button>
-                                                    </div>
-                                                @else
-                                                    <div class="modal-body">
-                                                        Apakah anda yakin menambahkan pos ini ke bookmark ?
-                                                        <form method="post" action="{{ route('bookmark.simpan') }}"
-                                                            autocomplete="off" enctype="multipart/form-data">
-                                                            @csrf
-                                                            <input type="hidden" name="idpos" id="idpos"
-                                                                class="form-control" value="{{ $p->idpos }}">
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                                    </div>
-                                                    </form>
-                                                @endif
-                                            @endforeach --}}
-                                            <div class="modal-body">
-                                                Apakah anda yakin menambahkan pos ini ke bookmark ?
-                                                <form method="post" action="{{ route('bookmark.simpan') }}"
-                                                    autocomplete="off" enctype="multipart/form-data">
-                                                    @csrf
-                                                    <input type="hidden" name="idpos" id="idpos"
-                                                        class="form-control" value="{{ $p->idpos }}">
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                            </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
+                                <a class="btn btn-sm btn-icon-only text-light" href="{{ route('bookmark', $p->idpos) }}">
+                                    <i class="ni ni-book-bookmark">
+                                    </i>
+                                </a>
                                 <div class="dropdown float-right">
                                     <a class="btn btn-sm btn-icon-only text-light" href="#" role="button"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -113,8 +38,27 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    @if (Session::has('success'))
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                            {{ Session::get('success') }}
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    @endif
+                                    @if (Session::has('error'))
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            {{ Session::get('error') }}
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="card mb-3" style="width: 18rem;">
@@ -235,7 +179,7 @@
                                                         <br>
                                                         Umur : {{ $p->umur }} Tahun
                                                         <br>
-                                                        Tinggi Badan : {{ $p->tinggibadan }} Kg
+                                                        Tinggi Badan : {{ $p->tinggibadan }} cm
                                                     </p>
                                                 </div>
                                                 <div class="col">
@@ -250,11 +194,11 @@
                                             <h2 class="card-title">Log Laporan</h2>
                                             @foreach ($laporhilang as $l)
                                                 <div class="alert alert-secondary" role="alert">
-                                                    <strong>{{ $l->created_at }} :</strong> Dilaporkan Terlihat di
+                                                    <strong>{{ $l->created_at }} :</strong> Dilaporkan terlihat di
                                                     {{ $l->tempatpenemuan }} dengan deskripsi :
-                                                    {{ $l->deskripsipenemuan }} - <strong>Dilaporkan Oleh :</strong>
-
-                                                    {{ $l->namaakun }}
+                                                    {{ $l->deskripsipenemuan }}
+                                                    <br/><strong>Dilaporkan oleh :</strong>
+                                                    {{ $l->namaakun }}, kontak : {{$l->kontak}}
                                                 </div>
                                             @endforeach
                                         </div>

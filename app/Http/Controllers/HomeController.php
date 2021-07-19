@@ -106,10 +106,6 @@ class HomeController extends Controller
 
     public function bookmarkuser()
     {
-        // $bookmark = bookmarkpos::select("*")
-        // ->join('pos','pos.idpos','=','bookmarkpos.idpos')
-        // ->where('idakun',$idakun)
-        // ->get();
         $bookmark = DB::table('bookmarkpos')
         ->join('pos','pos.idpos','=', 'bookmarkpos.idpos')
         ->select('pos.*', 'bookmarkpos.*')
