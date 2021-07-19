@@ -557,6 +557,8 @@ class ComposerStaticInit4155d60713896b81d5af048a7beeb0b3
         'App\\Http\\Requests\\UserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UserRequest.php',
         'App\\Models\\Pos' => __DIR__ . '/../..' . '/app/Models/Pos.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Models\\bookmarkpos' => __DIR__ . '/../..' . '/app/Models/bookmarkpos.php',
+        'App\\Models\\laporhilang' => __DIR__ . '/../..' . '/app/Models/laporhilang.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',

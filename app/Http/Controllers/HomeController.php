@@ -33,7 +33,8 @@ class HomeController extends Controller
     public function indexAdmin()
     {
         $pos = DB::table('pos')->orderBy('updated_at', 'desc')->paginate(10);
-        return view('admin.dashboard', ['pos' => $pos]);
+        $arsippos = DB::table('arsippos')->orderBy('created_at', 'desc')->paginate(10);
+        return view('admin.dashboard', ['pos' => $pos, 'arsippos' => $arsippos]);
     }
 
     //view hilang admin

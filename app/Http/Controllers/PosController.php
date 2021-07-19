@@ -83,6 +83,16 @@ class PosController extends Controller
         return redirect('home')->with('success', 'Pos berhasil diperbaharui');
     }
 
+    public function hapus(Request $request)
+    {
+        DB::table('pos')->where('idpos', $request->idpos)->update([
+            'statuspos' => $request->statuspos,
+            'updated_at' => DB::raw('now()'),
+        ]);
+        DB::table('pos')->where('idpos', $request->idpos)->delete();
+        return redirect('home')->with('success', 'Pos Berhasil Dihapus!');
+    }
+
     //cari user
     public function cari(Request $request)
     {
@@ -112,10 +122,4 @@ class PosController extends Controller
         return redirect('');
     }
 
-    public function hapus($id)
-    {
-        DB::table('pos')->where('idpos', $id)->delete();
-        return redirect('');
-        //trigger autodelete pos yang sudah selesai >1minggu
-    }
 }

@@ -29,7 +29,6 @@ class CreatePosTable extends Migration
             $table->date('tanggal');
             $table->string('tempat', 100);
             $table->tinyInteger('statuspos')->length(1);
-            $table->date('tanggalselesai')->nullable();
             $table->timestamps();
         });
     }

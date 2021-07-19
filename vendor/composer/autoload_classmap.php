@@ -37,6 +37,8 @@ return array(
     'App\\Http\\Requests\\UserRequest' => $baseDir . '/app/Http/Requests/UserRequest.php',
     'App\\Models\\Pos' => $baseDir . '/app/Models/Pos.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
+    'App\\Models\\bookmarkpos' => $baseDir . '/app/Models/bookmarkpos.php',
+    'App\\Models\\laporhilang' => $baseDir . '/app/Models/laporhilang.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',

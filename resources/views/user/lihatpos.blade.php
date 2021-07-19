@@ -31,6 +31,8 @@
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                         @if ($p->idakun == auth()->user()->idakun)
                                             <a class="dropdown-item" href="/pos/edit/{{ $p->idpos }}">Edit</a>
+                                            <a class="dropdown-item" style="color:#f5365c" data-toggle="modal"
+                                                data-target="#hapusposModal">Hapus</a>
                                         @else
                                             <a class="dropdown-item" href="#" style="color:#f5365c">Laporkan Pos</a>
                                         @endif
@@ -100,7 +102,6 @@
                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                                     <div class="modal-content">
-
                                                         <div class="modal-body">
                                                             <div class="row">
                                                                 <div class="col-xl order-xl-1">
@@ -163,6 +164,59 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="modal fade" id="hapusposModal" tabindex="-1" role="dialog"
+                                    aria-labelledby="hapusposModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-xl order-xl-1">
+                                                            <div class="card bg-secondary shadow">
+                                                                <div class="card-header bg-white border-0">
+                                                                    <div class="row align-items-center">
+                                                                        <h3 class="mb-0 ml-3">
+                                                                            {{ __('Hapus Pos') }}
+                                                                        </h3>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <form method="post"
+                                                                        action="{{ route('posUser.hapus') }}"
+                                                                        autocomplete="off" enctype="multipart/form-data">
+                                                                        @csrf
+                                                                        <input type="hidden" name="idpos" id="idpos"
+                                                                            class="form-control"
+                                                                            value="{{ $p->idpos }}">
+                                                                        <div class="form-group">
+                                                                            <label class="form-control-label"
+                                                                                for="statuspos">Alasan Menghapus</label>
+                                                                            <select class="form-control" id="statuspos"
+                                                                                name="statuspos">
+                                                                                <option value="1">Kasus sudah selesai
+                                                                                </option>
+                                                                                <option value="2">Data yang dilaporkan tidak
+                                                                                    benar</option>
+                                                                                <option value="3">Lainnya</option>
+                                                                            </select>
+                                                                        </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Batal</button>
+                                                <button type="submit" class="btn btn-primary">Hapus Pos</button>
+                                            </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="col-sm-8">
                                     <div class="card mb-3">
                                         <div class="card-body">
@@ -197,8 +251,8 @@
                                                     <strong>{{ $l->created_at }} :</strong> Dilaporkan terlihat di
                                                     {{ $l->tempatpenemuan }} dengan deskripsi :
                                                     {{ $l->deskripsipenemuan }}
-                                                    <br/><strong>Dilaporkan oleh :</strong>
-                                                    {{ $l->namaakun }}, kontak : {{$l->kontak}}
+                                                    <br /><strong>Dilaporkan oleh :</strong>
+                                                    {{ $l->namaakun }}, kontak : {{ $l->kontak }}
                                                 </div>
                                             @endforeach
                                         </div>

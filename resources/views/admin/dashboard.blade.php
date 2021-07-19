@@ -12,9 +12,6 @@
                             <div class="col">
                                 <h3 class="mb-0">Daftar Pos</h3>
                             </div>
-                            <div class="col text-right">
-                                <a href="#!" class="btn btn-sm btn-primary">See all</a>
-                            </div>
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -33,7 +30,6 @@
                                     <th scope="col">Tanggal</th>
                                     <th scope="col">Tempat</th>
                                     <th scope="col">Status Pos</th>
-                                    <th scope="col">Tanggal Selesai</th>
                                 </tr>
                             </thead>
                             @foreach ($pos as $p)
@@ -80,9 +76,6 @@
                                     <td>
                                         {{$p -> statuspos}}
                                     </td>
-                                    <td>
-                                        {{$p -> tanggalselesai}}
-                                    </td>
                                 </tr>
                             </tbody>
                             @endforeach
@@ -123,37 +116,59 @@
                                     <th scope="col">Tanggal</th>
                                     <th scope="col">Tempat</th>
                                     <th scope="col">Status Pos</th>
-                                    <th scope="col">Tanggal Selesai</th>
+                                    <th scope="col">Tanggal Diarsipkan</th>
                                 </tr>
                             </thead>
+                            @foreach ($arsippos as $a)
                             <tbody>
                                 <tr>
                                     <th scope="row">
+                                        {{$a -> nama}}
                                     </th>
                                     <td>
+                                      @if ($a -> tipepos == 1)
+                                          Orang Hilang
+                                      @else
+                                          Orang Ditemukan
+                                      @endif
                                     </td>
                                     <td>
+                                        {{$a -> flagcounter}}
                                     </td>
                                     <td>
+                                     @if ($a -> gender == 1)
+                                          Laki-Laki
+                                      @else
+                                          Perempuan
+                                      @endif
                                     </td>
                                     <td>
+                                        {{$a -> umur}}
                                     </td>
                                     <td>
+                                        {{$a -> tinggibadan}}
                                     </td>
                                     <td>
+                                        {{$a -> deskripsi}}
                                     </td>
                                     <td>
+                                        {{$a -> kontak}}
                                     </td>
                                     <td>
+                                        {{$a -> tanggal}}
                                     </td>
                                     <td>
+                                        {{$a -> tempat}}
                                     </td>
                                     <td>
+                                        {{$a -> statuspos}}
                                     </td>
                                     <td>
+                                        {{$a -> created_at}}
                                     </td>
                                 </tr>
                             </tbody>
+                            @endforeach
                         </table>
                     </div>
                 </div>

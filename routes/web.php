@@ -30,7 +30,6 @@ Route::get('admin/ditemukan', 'App\Http\Controllers\HomeController@ditemukan')->
 Route::get('/ditemukan', 'App\Http\Controllers\HomeController@ditemukanUser')->name('ditemukanUser');
 
 Route::group(['middleware' => 'auth'], function () {
-    // Route::resource('user', 'App\Http\Controllers\AkunController', ['except' => ['show']]);
     Route::get('profil/user/edit', ['as' => 'profilUser.edit', 'uses' => 'App\Http\Controllers\AkunController@editUser']);
     Route::put('profil/user', ['as' => 'profilUser.update', 'uses' => 'App\Http\Controllers\AkunController@update']);
     Route::put('profil/user/password', ['as' => 'profilUser.password', 'uses' => 'App\Http\Controllers\AkunController@password']);
@@ -43,9 +42,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/pos/laporhilangtambah', ['as' => 'laporhilang.tambah', 'uses' => 'App\Http\Controllers\LaporHilangController@tambahlapor']);
     Route::post('/pos/laporhilangsimpan', ['as' => 'laporhilang.simpan', 'uses' => 'App\Http\Controllers\LaporHilangController@simpanlapor']);
     Route::get('/pos/bookmark/{idpos}', ['as' => 'bookmark', 'uses' => 'App\Http\Controllers\BookmarkPosController@bookmark']);
-    // Route::post('/pos/simpanbookmark', ['as' => 'bookmark.simpan', 'uses' => 'App\Http\Controllers\BookmarkPosController@simpanbookmark']);
     Route::get('/pos/daftarbookmark', ['as' => 'bookmark.daftar', 'uses' => 'App\Http\Controllers\HomeController@bookmarkuser']);
     Route::get('/pos/hapusbookmark/{idbookmark}', ['as' => 'bookmark.hapus', 'uses' => 'App\Http\Controllers\BookmarkPosController@hapusbookmark']);
+    Route::post('pos/hapus', ['as' => 'posUser.hapus', 'uses' => 'App\Http\Controllers\PosController@hapus']);
 });
 
 Route::group(['middleware' => 'auth'], function () {

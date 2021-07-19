@@ -16,9 +16,7 @@ class CreateArsipposTable extends Migration
         Schema::create('arsippos', function (Blueprint $table) {
             $table->id('idarsip');
             $table->bigInteger('idpos')->unsigned();
-            $table->foreign('idpos')->references('idpos')->on('pos');
             $table->bigInteger('idakun')->unsigned();
-            $table->foreign('idakun')->references('idakun')->on('akun');
             $table->integer('flagcounter')->length(3);
             $table->boolean('tipepos');
             $table->string('foto', 255)->nullable();
@@ -31,7 +29,7 @@ class CreateArsipposTable extends Migration
             $table->date('tanggal');
             $table->string('tempat', 100);
             $table->tinyInteger('statuspos')->length(1);
-            $table->date('tanggalselesai')->nullable();
+            $table->datetime('created_at')->nullable();
         });
     }
 
