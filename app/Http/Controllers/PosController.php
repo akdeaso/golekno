@@ -110,7 +110,10 @@ class PosController extends Controller
         $pos = DB::table('pos')
             ->where('nama', 'like', "%" . $cari . "%")
             ->paginate();
-        return view('admin.dashboard', ['pos' => $pos]);
+        $arsippos = DB::table('arsippos')
+            ->where('nama', 'like', "%" . $cari . "%")
+            ->paginate();
+        return view('admin.dashboard', ['pos' => $pos , 'arsippos' => $arsippos]);
     }
 
     public function filter()
