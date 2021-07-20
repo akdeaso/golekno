@@ -26,10 +26,12 @@ class FlagPosController extends Controller
         return back()->with('success', 'Pos berhasil dilaporkan!');
     }
 
-    public function hapusflag($idflag)
+    public function hapusflag(Request $request)
     {
-        DB::table('flagpos')->where('idflag', $idflag)->delete();
-
+        DB::table('pos')->where('idpos', $request->idpos)->update([
+            'flagcounter' => 0,
+        ]);
+        DB::table('flagpos')->where('idpos', $request->idpos)->delete();
         return back()->with('success','Laporan Flag Telah Dihapus');
     }
 

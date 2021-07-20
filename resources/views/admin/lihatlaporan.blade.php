@@ -25,7 +25,7 @@
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                         <a class="dropdown-item" href="/admin/pos/hapus/{{$p->idpos}}" style="color:#f5365c">Hapus Pos</a>
-                                        <a class="dropdown-item" href="" style="color:#f5365c">Hapos Laporan Pos</a>
+                                        <a class="dropdown-item" href="/admin/pos/hapusflag/{{$p->idpos}}" style="color:#f5365c">Hapus Laporan Pos</a>
                                     </div>
                                 </div>
                             </div>
