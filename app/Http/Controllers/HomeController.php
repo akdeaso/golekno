@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\laporhilang;
 use App\Models\User;
 use App\Models\bookmarkpos;
+use App\Models\flagpos;
 
 class HomeController extends Controller
 {
@@ -114,4 +115,19 @@ class HomeController extends Controller
         ->get();
         return view('user.daftarbookmark', ['bookmark' => $bookmark , ]);
     }
+
+    public function lihatlaporan($idpos)
+    {
+        $pos = DB::table('pos')
+        ->join('akun', 'pos.idakun', '=', 'akun.idakun')
+        ->select('pos.*', 'akun.namaakun')
+        ->where('idpos',$idpos)
+        ->get();
+        $flagpos = flagpos::select("*")
+        ->join('akun','akun.idakun','=','flagpos.idakun')
+        ->where("idpos", "=" ,$idpos)
+        ->get();
+        return view('admin.lihatlaporan', ['pos' => $pos, 'flagpos' => $flagpos]);
+    }
+
 }

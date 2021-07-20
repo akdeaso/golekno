@@ -45,6 +45,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/pos/daftarbookmark', ['as' => 'bookmark.daftar', 'uses' => 'App\Http\Controllers\HomeController@bookmarkuser']);
     Route::get('/pos/hapusbookmark/{idbookmark}', ['as' => 'bookmark.hapus', 'uses' => 'App\Http\Controllers\BookmarkPosController@hapusbookmark']);
     Route::post('pos/hapus', ['as' => 'posUser.hapus', 'uses' => 'App\Http\Controllers\PosController@hapus']);
+    Route::get('/pos/flagtambah', ['as' => 'flag.tambah', 'uses' => 'App\Http\Controllers\FlagPosController@tambahflag']);
+    Route::post('/pos/flagsimpan', ['as' => 'flag.simpan', 'uses' => 'App\Http\Controllers\FlagPosController@simpanflag']);
 });
 
 Route::group(['middleware' => 'auth'], function () {
@@ -58,4 +60,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('daftaruser/tambah', ['as' => 'tambahuser', 'uses' => 'App\Http\Controllers\AkunController@tambahuser']);
     Route::post('daftaruser/simpan', ['as' => 'tambahuser.simpan', 'uses' => 'App\Http\Controllers\AkunController@simpan']);
     Route::get('admin/pos/lihat/{idpos}', ['as' => 'posAdmin.lihat', 'uses' => 'App\Http\Controllers\HomeController@lihatposadmin']);
+    Route::get('admin/pos/lihatlaporan/{idpos}', ['as' => 'posAdmin.lihatlaporan', 'uses' => 'App\Http\Controllers\HomeController@lihatlaporan']);
+    Route::get('admin/pos/hapusflag/{idpos}', ['as' => 'posAdmin.hapusflag', 'uses' => 'App\Http\Controllers\FlagPosController@hapusflag']);
+    Route::get('admin/pos/hapus/{idpos}', ['as' => 'posAdmin.hapus', 'uses' => 'App\Http\Controllers\PosController@hapusadmin']);
 });

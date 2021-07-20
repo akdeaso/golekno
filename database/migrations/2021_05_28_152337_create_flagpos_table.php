@@ -20,6 +20,7 @@ class CreateFlagposTable extends Migration
             $table->bigInteger('idakun')->unsigned();
             $table->foreign('idakun')->references('idakun')->on('akun');
             $table->string('alasan', 100)->nullable();
+            $table->timestamps();
         });
     }
 

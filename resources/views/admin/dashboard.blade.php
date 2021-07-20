@@ -30,6 +30,7 @@
                                     <th scope="col">Tanggal</th>
                                     <th scope="col">Tempat</th>
                                     <th scope="col">Status Pos</th>
+                                    <th scope="col"></th>
                                 </tr>
                             </thead>
                             @foreach ($pos as $p)
@@ -75,6 +76,17 @@
                                     </td>
                                     <td>
                                         {{$p -> statuspos}}
+                                    </td>
+                                    <td>
+                                        <div class="dropdown float-right">
+                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                    <a class="dropdown-item" href="/admin/pos/lihatlaporan/{{ $p->idpos }}">Detail</a>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             </tbody>
@@ -163,6 +175,8 @@
                                     @elseif ($a -> statuspos == 2)
                                         Data yang dilaporkan tidak
                                         benar
+                                    @elseif ($a -> statuspos == 0)
+                                        Pos dihapus oleh admin
                                     @else
                                         Lainnya
                                     @endif

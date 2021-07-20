@@ -125,4 +125,10 @@ class PosController extends Controller
         return redirect('');
     }
 
+    public function hapusadmin ($idpos)
+    {
+        DB::table('pos')->where('idpos', $idpos)->delete();
+        return redirect('admin/home')->with('success', 'Pos Berhasil Dihapus dan Diarsipkan!');
+    }
+
 }
