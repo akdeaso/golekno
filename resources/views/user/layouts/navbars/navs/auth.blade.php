@@ -2,20 +2,21 @@
 <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
     <div class="container-fluid">
         <!-- Brand -->
-        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{ route('home') }}">{{ __('Dashboard') }}</a>
+        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block"
+            href="{{ route('home') }}">{{ __('Dashboard') }}</a>
         <!-- Form -->
-        <div class="btn btn-sm btn-icon-only text-light float-right d-none d-md-flex ml-auto">
-            <a data-toggle="modal" data-target="#filterModal">
-                <i class="fas fa-filter"></i>
-            </a>
-        </div>
+        <a class="btn btn-sm btn-icon-only text-light ml-auto mr-2" data-toggle="modal" data-target="#filterModal">
+            <i class="fas fa-filter mt-1" style="font-size: 24px">
+            </i>
+        </a>
         {{-- <form action="{{ route('posUser.filter') }}" method="POST">
             @csrf
             <input type="date" name="from" value="{{date('Y-m-d')}}">&nbsp;
             <input type="date" name="to" value="{{date('Y-m-d')}}">&nbsp;
             <input type="submit" value="View">
         </form> --}}
-        <form action="{{ route('posUser.cari') }}" method="GET" class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+        <form action="{{ route('posUser.cari') }}" method="GET"
+            class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-1">
             <div class="form-group mb-0">
                 <div class="input-group input-group-alternative">
                     <div class="input-group-prepend">
@@ -28,7 +29,8 @@
         <!-- User -->
         <ul class="navbar-nav align-items-center d-none d-md-flex">
             <li class="nav-item dropdown">
-                <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
                             <img alt="Image placeholder" src="{{ asset('argon') }}/img/theme/team-4-800x800.jpg">
@@ -40,7 +42,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
                     <div class=" dropdown-header noti-title">
-                        <h6 class="text-overflow m-0">Selamat Datang {{auth()->user()->namaakun}}!</h6>
+                        <h6 class="text-overflow m-0">Selamat Datang {{ auth()->user()->namaakun }}!</h6>
                     </div>
                     <a href="{{ route('profilUser.edit') }}" class="dropdown-item">
                         <i class="ni ni-single-02"></i>

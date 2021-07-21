@@ -17,6 +17,57 @@
                             </div>
                         </div>
                     </div>
+                    {{-- Modal --}}
+                    <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Filter berdasarkan tanggal hilang atau
+                                        detemukan</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form method="post" action="{{ route('posUser.filter') }}" autocomplete="off"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="modal-body">
+                                        <div class="input-daterange datepicker row align-items-center">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i
+                                                                    class="ni ni-calendar-grid-58"></i></span>
+                                                        </div>
+                                                        <input class="form-control" placeholder="Start date" type="date"
+                                                            name="from" value="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i
+                                                                    class="ni ni-calendar-grid-58"></i></span>
+                                                        </div>
+                                                        <input class="form-control" placeholder="End date" type="date"
+                                                            name="to" value="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                        <button type="submit" class="btn btn-primary">Terapkan</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                     <div class="container">
                         <div class="row">
                             <div class="col">
@@ -42,8 +93,8 @@
                                             @endif
 
                                         </div>
-                                        <img class="card-img-top" src="{{ url('/image/' . $p->foto) }}" alt="Card image cap"
-                                            style="width: 300; height: 190px; object-fit: cover;"
+                                        <img class="card-img-top" src="{{ url('/image/' . $p->foto) }}"
+                                            alt="Card image cap" style="width: 300; height: 190px; object-fit: cover;"
                                             sizes="(max-width: 286pxrem) 100vw, 286px">
                                         <div class="card-body" style="max-height: 100%">
                                             <h5 class="card-title">{{ $p->nama }}</h5>
