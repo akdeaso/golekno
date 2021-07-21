@@ -47,6 +47,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('pos/hapus', ['as' => 'posUser.hapus', 'uses' => 'App\Http\Controllers\PosController@hapus']);
     Route::get('/pos/flagtambah', ['as' => 'flag.tambah', 'uses' => 'App\Http\Controllers\FlagPosController@tambahflag']);
     Route::post('/pos/flagsimpan', ['as' => 'flag.simpan', 'uses' => 'App\Http\Controllers\FlagPosController@simpanflag']);
+    Route::post('/pos/filter', ['as' => 'posUser.filter', 'uses' => 'App\Http\Controllers\PosController@filter']);
 });
 
 Route::group(['middleware' => 'auth'], function () {

@@ -116,8 +116,11 @@ class PosController extends Controller
         return view('admin.dashboard', ['pos' => $pos , 'arsippos' => $arsippos]);
     }
 
-    public function filter()
+    public function filter(Request $request)
     {
+        $pos=Pos::where('tanggal', '>=', $request->from)->where('tanggal', '<=', $request->to)
+        ->paginate();
+        return view('user.dashboard', compact('pos'));
     }
 
     public function buat()

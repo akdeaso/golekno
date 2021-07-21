@@ -4,6 +4,17 @@
         <!-- Brand -->
         <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{ route('home') }}">{{ __('Dashboard') }}</a>
         <!-- Form -->
+        <div class="btn btn-sm btn-icon-only text-light float-right d-none d-md-flex ml-auto">
+            <a data-toggle="modal" data-target="#filterModal">
+                <i class="fas fa-filter"></i>
+            </a>
+        </div>
+        {{-- <form action="{{ route('posUser.filter') }}" method="POST">
+            @csrf
+            <input type="date" name="from" value="{{date('Y-m-d')}}">&nbsp;
+            <input type="date" name="to" value="{{date('Y-m-d')}}">&nbsp;
+            <input type="submit" value="View">
+        </form> --}}
         <form action="{{ route('posUser.cari') }}" method="GET" class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
             <div class="form-group mb-0">
                 <div class="input-group input-group-alternative">
