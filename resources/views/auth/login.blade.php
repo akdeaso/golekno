@@ -60,14 +60,7 @@
                     </div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-6">
-                        @if (Route::has('password.request'))
-                            <a href="{{ route('password.request') }}" class="text-light">
-                                <small>{{ __('Lupa password?') }}</small>
-                            </a>
-                        @endif
-                    </div>
-                    <div class="col-6 text-right">
+                    <div class="col text-right">
                         <a href="{{ route('register') }}" class="text-light">
                             <small>{{ __('Buat akun baru') }}</small>
                         </a>

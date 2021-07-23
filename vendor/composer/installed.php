@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'ebe4dea85c7c680b0b5c44b64e84d37c44a6d9a8',
+    'reference' => '4ce9a0d5ca2e0cd3acf2a8db3eb59974609763d6',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -439,6 +439,15 @@
       ),
       'reference' => '62b3cb7516a605634416ceb386c6f2b467bc5f45',
     ),
+    'laravel/browser-kit-testing' => 
+    array (
+      'pretty_version' => 'v6.2.2',
+      'version' => '6.2.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'a8bc92f2bb91db210ed2d8cbf4d6b16fa49453dc',
+    ),
     'laravel/framework' => 
     array (
       'pretty_version' => 'v8.48.2',
@@ -455,7 +464,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'ebe4dea85c7c680b0b5c44b64e84d37c44a6d9a8',
+      'reference' => '4ce9a0d5ca2e0cd3acf2a8db3eb59974609763d6',
     ),
     'laravel/legacy-factories' => 
     array (
@@ -1023,6 +1032,15 @@
       array (
       ),
       'reference' => '5f38c8804a9e97d23e0c8d63341088cd8a22d627',
+    ),
+    'symfony/dom-crawler' => 
+    array (
+      'pretty_version' => 'v5.3.0',
+      'version' => '5.3.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '55fff62b19f413f897a752488ade1bc9c8a19cdd',
     ),
     'symfony/error-handler' => 
     array (
